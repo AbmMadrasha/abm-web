@@ -1,0 +1,297 @@
+import React,{useState} from 'react';
+
+const Application = () => {
+
+  const step = [
+    "Personal Information",
+    "Educational Qualification",
+    "Final Submission"
+  ];
+
+const [currentStep, setCurrentStep] = useState(0);
+
+const [showPopup, setPopup] = useState(false);
+
+const[agree,setAgree]=useState(false);
+
+// Agree checkbox function
+
+
+    // Next Step
+  const handleNext = () => {
+    if (currentStep < step.length - 1) {
+      setCurrentStep(currentStep + 1);
+    } else {
+      setPopup(true);
+    }
+  };
+
+  // Previous Step
+  const handlePrevious = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
+  return (
+    <div className='w-full max-w-6xl mx-auto p-20'>
+
+      <div className='flex items-center justify-between relative'>
+
+        {/* Progress Line */}
+        <div className='absolute top-5 left-15 right-15 h-1 bg-gray-200 rounded-full'>
+
+          {/* Active Progress */}
+          <div
+            className='h-1 bg-blue-500 rounded-full transition-all duration-500'
+            style={{
+              width: `${(currentStep / (step.length - 1)) * 100}%`
+            }}
+          />
+
+        </div>
+
+        {/* Steps */}
+        {step.map((step, index) => {
+
+          const active = index <= currentStep;
+
+          return (
+            <div
+              key={index}
+              className='relative z-10 flex flex-col items-center'
+            >
+
+              {/* Circle */}
+              <div
+                className={`w-10 h-10 flex items-center justify-center rounded-full border-4 text-sm font-bold
+                ${
+                  active
+                    ? 'bg-blue-500 border-blue-500 text-white'
+                    : 'bg-white border-gray-300 text-gray-400'
+                }`}
+              >
+                {index + 1}
+              </div>
+
+              {/* Label */}
+              <p
+                className={`mt-3 text-sm font-medium text-center
+                ${
+                  active
+                    ? 'text-blue-600'
+                    : 'text-gray-400'
+                }`}
+              >
+                {step}
+              </p>
+
+            </div>
+          );
+        })}
+
+      </div>
+
+      {/* Step Content */}
+      <div className='mt-4 md:mt-08'>
+        {
+          currentStep === 0 && (
+            <div className='bg-gray-100 p-6 rounded-xl shadow'>
+              <h2 className='font-bold'>
+                Personal Information
+              </h2>
+
+              {/* First Name & Last Name */}
+              <div className='mt-4 flex flex-col md:flex-row gap-4'>
+                <div className='flex-1'>
+                  <input type="text" placeholder='First Name'
+                  className='w-full p-3 rounded-lg bg-white border-0 ' />
+                  </div>
+                {/* Last Name */}
+                <div className='flex-1'>
+                  <input type="text" placeholder='Last Name'
+                  className='w-full p-3 rounded-lg bg-white border-0 ' />
+                  </div>
+              </div>
+
+              {/* Fathers Name & Mothers Name */}
+              <div className='mt-4 flex flex-col md:flex-row gap-4'>
+                <div className='flex-1'>
+                  <input type="text" placeholder='Fathers Name'
+                  className='w-full p-3 rounded-lg bg-white border-0 ' />
+                  </div>
+                {/* Mothers Name */}
+                <div className='flex-1'>
+                  <input type="text" placeholder='Mothers Name'
+                  className='w-full p-3 rounded-lg bg-white border-0 ' />
+                  </div>
+              </div>
+
+              {/* Gender & Nationality */}
+              <div className='mt-4 flex flex-col md:flex-row gap-4 justify-between items-center'>
+                {/* Gender */}
+                <div className='flex-1'>
+                  <select className='w-full p-3 rounded-lg bg-white border-0 '
+                   defaultValue="">
+                    <option value="" disabled>Select Gender</option>
+                     <option value="male" >Male</option>
+                      <option value="female" >Female</option>
+                       <option value="others" >Other</option>
+                   </select>
+                </div>
+
+                {/* Nationality */}
+                <div className='flex-1'>
+                  <select className='w-full p-3 rounded-lg bg-white border-0 ' defaultValue="" >
+                    <option value="" disabled>Select Country</option>
+                    <option value="Bangladesh" >Bangladesh</option>
+                    <option value="Saudi Arabia" >Saudi Arabia</option>
+                    <option value="Pakistan">Pakistan</option>
+                  </select>
+                </div>
+                </div>
+
+              {/* Date Of Birth */}
+              <div className='mt-4'>
+                <input 
+                onFocus={(e)=>(e.target.type = 'date')}
+                onBlur={(e)=>{
+                  if(!e.target.value)
+                    e.target.type='text'
+                }}
+                className='text-black p-3 bg-white w-full rounded-lg' 
+                placeholder='Date Of Birth' type="date" /
+                >
+              </div>
+            
+            </div>
+
+            
+          )
+        }
+
+        {
+           currentStep === 1 &&(
+            <div className='bg-gray-100 p-6 rounded-xl shadow'>
+              <h2 className='font-bold'>Educational Qualification</h2>
+            
+            {/* Last Class & Institute Name */}
+            <div className='mt-4 flex gap-4 flex-col md:flex-row justify-between items-center'>
+              <input type="text" className='flex-1 p-3 bg-white rounded-lg' placeholder='Last Class'/>
+              <input type="text" className='flex-1 p-3 bg-white rounded-lg' placeholder='Institute Name' />
+            </div>
+
+            {/* Interest in class and session */}
+            <div className='mt-4 flex gap-4 flex-col md:flex-row justify-between items-center'>
+              <input type="text" className='flex-1 p-3 bg-white rounded-lg' placeholder='Interest In Class'/>
+              <input type="text" className='flex-1 p-3 bg-white rounded-lg' placeholder='Session' />
+            </div>
+
+
+            {/* <div className='flex-1 mt-4'>
+                  <select className='w-full p-3 rounded-lg bg-white border-0 ' defaultValue="" >
+                    <option value="" disabled>Select Process</option>
+                    <option value="Bangladesh" >On-Campus</option>
+                    <option value="Saudi Arabia" >Online</option>
+                  </select>
+                </div> */}
+
+            
+            </div>
+           )
+        }
+
+      {
+           currentStep === 2 &&(
+            <div className='bg-gray-100 p-6 rounded-xl shadow'>
+              <h2 className='font-bold'>Address</h2>
+            
+            <div className='mt-4 flex md:flex'>
+              <input type="text" className='flex-1 p-3 bg-white rounded-lg' placeholder='Present Address'/>
+            </div>
+
+            <div className='mt-4 flex flex-col md:flex-row justify-between items-center'>
+              <input type="text" className='flex-1 p-3 bg-white rounded-lg' placeholder='Permanent Address'/>
+            </div>
+            </div>
+           )
+        }
+
+
+      </div>
+
+      {/* Button for next and previous */}
+      <div className='mt-8 flex justify-between'>
+        <button onClick={handlePrevious}
+        disabled={currentStep === 0}
+        className={`rounded-lg p-3 font-medium transition bg-blue-500 ${
+          currentStep === 0? 'bg-gray-300 cursor-not-allowed'
+          : 'bg-blue-500 text-white hover:bg-blue-100 hover:text-black'
+        }`
+        }>
+          Previous
+        </button>
+
+
+        <button
+          onClick={handleNext}
+          // disabled={currentStep === step.length - 1}
+          className={`rounded-lg p-3 font-medium transition
+          ${
+            currentStep === step.length - 1
+              ? 'bg-amber-600 text-white cursor-pointer'
+              : 'bg-blue-500 text-white hover:bg-blue-600'
+          }`}
+        >
+         {currentStep === step.length -1? 'Finish':'Next'}
+        </button>
+
+      </div>
+
+    {/* Confirmation pop up*/}
+    {showPopup && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+         {/* Popup Box */}
+        <div className="bg-white w-120 p-6 rounded-lg shadow-lg">
+        <h2 className="text-xl font-bold text-center">Agreement</h2>
+
+        <p className="mt-3 text-gray-600 text-start">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est commodi ducimus laudantium a quaerat,
+        saepe unde, labore qui, earum praesentium sequi natus! Asperiores expedita quasi nisi quos cumque nobis minus?
+        </p>
+
+        <div className='mt-4 flex gap-4'> 
+        <input 
+        type="checkbox"
+        checked = {agree}
+        onChange={()=>setAgree(!agree)}
+        className='text-start'/>
+        <p className='text-[12px]'>I am committed to abiding by all school rules and regulations.</p>
+        </div>
+
+      <div className='flex justify-between items-center gap-10'>
+
+        <button
+          onClick={() => setPopup(false)}
+          className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          Cancel
+        </button>
+
+
+        <button className={`mt-4  ${agree? 'bg-amber-500':'bg-gray-400'}
+        ${agree? 'cursor-pointer':'cursor-not-allowed'}
+        text-white px-4 py-2 rounded`}>
+        Agree
+        </button>
+      </div>
+
+    </div>
+
+  </div>)}
+
+    </div>
+  );
+};
+
+export default Application;

@@ -1,0 +1,152 @@
+import React from 'react'
+
+const Madrasha_Calendar = () => {
+
+    const calendarDetails = [
+        {
+            "title": "title-1",
+            "subtitle": "this is subtitle-2",
+            "subtitle_details": "this is a subtitle details under writing",
+            "mini_headline": "Heading",
+            "st_day": 1,
+            "st_month": "April",
+            "st_year": 'Sunday',
+            "ed_day": 10,
+            "ed_month": "April",
+            "ed_year": "Monday"
+        },
+
+        {
+            "title": "title-1",
+            "subtitle": "this is subtitle-2",
+            "subtitle_details": "this is a subtitle details under writing",
+            "mini_headline": "Heading",
+            "st_day": 1,
+            "st_month": "April",
+            "st_year": 'Sunday',
+            "ed_day": 10,
+            "ed_month": "April",
+            "ed_year": "Monday"
+        },
+
+        {
+            "title": "title-1",
+            "subtitle": "this is subtitle-2",
+            "subtitle_details": "this is a subtitle details under writing",
+            "mini_headline": "Heading",
+            "st_day": 1,
+            "st_month": "April",
+            "st_year": 'Sunday',
+            "ed_day": 10,
+            "ed_month": "April",
+            "ed_year": "Monday"
+        },
+
+        {
+            "title": "title-1",
+            "subtitle": "this is subtitle-2",
+            "subtitle_details": "this is a subtitle details under writing",
+            "mini_headline": "Heading",
+            "st_day": 1,
+            "st_month": "April",
+            "st_year": 'Sunday',
+            "ed_day": 10,
+            "ed_month": "April",
+            "ed_year": "Monday"
+        },
+
+        {
+            "title": "title-1",
+            "subtitle": "this is subtitle-2",
+            "subtitle_details": "this is a subtitle details under writing",
+            "mini_headline": "Heading",
+            "st_day": 1,
+            "st_month": "April",
+            "st_year": 'Sunday',
+            "ed_day": 10,
+            "ed_month": "April",
+            "ed_year": "Monday"
+        },
+
+        {
+            "title": "title-1",
+            "subtitle": "this is subtitle-2",
+            "subtitle_details": "this is a subtitle details under writing",
+            "mini_headline": "Heading",
+            "st_day": 1,
+            "st_month": "April",
+            "st_year": 'Sunday',
+            "ed_day": 10,
+            "ed_month": "April",
+            "ed_year": "Monday"
+        },
+       
+    ]
+
+  return (
+    <div className='bg-gray-100 h-auto pb-10'>
+        {/* University Calendar Title  */}
+        <h2 className='py-10 px-10 text-3xl font-bold'>Madrasah Calendar</h2>
+
+        {/* Main details on below  */}
+        <div className='px-10 grid grid-cols-1 md:grid md:grid-cols-2 gap-3 rounded-2xl'>
+            {calendarDetails.map((item,index)=>(
+                <div key={index} className='bg-white border border-gray-300 flex flex-row justify-between gap-2 rounded-xl'>
+                   
+                   {/* 1st Part */}
+                    <div className='bg-gray-100 rounded-xl m-4 overflow-hidden flex-2 md:flex-1'>
+                        <div className='bg-green-900 text-white w-full flex flex-row justify-center items-center text-xl h-8'>
+                            Headling
+                        </div>
+
+                        <div className='flex flex-row gap-0 justify-around'>
+                            {/* start date */}
+                            <div className='px-4 py-2 flex flex-col gap-0 items-center justify-center w-full h-full'>
+                                <div className='text-gray-600 text-[13px]'>{item.st_year}</div>                                
+                                <div className='text-2xl font-bold'>{item.st_day}</div>
+                                <div>{item.st_month}</div>
+                            </div>
+
+                            {/* to */}
+                            <div className='flex flex-row items-center justify-center'>
+                                to
+                            </div>
+
+                            {/* end date */}
+                            {/* start date */}
+                            <div className='px-4 py-2 flex flex-col gap-0 items-center justify-center w-full h-full'>
+                                <div className='text-gray-600 text-[13px]'>{item.ed_year}</div>                                
+                                <div className='text-2xl font-bold'>{item.ed_day}</div>
+                                <div>{item.ed_month}</div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    {/* another detgails */}
+                    <div className='flex-1 md:flex-2'>
+                        <div className='py-4 flex flex-col gap-2'>
+                            <button className='bg-gray-100 border border-gray-300 w-10'>
+                                up
+                            </button>
+
+                            <div className='text-[15px] font-bold'>
+                                Abu Bakar (R) Madrasah
+                            </div>
+
+                            <div>
+                                This is a notice
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            ))}
+        </div>
+    </div>
+  )
+}
+
+export default Madrasha_Calendar
