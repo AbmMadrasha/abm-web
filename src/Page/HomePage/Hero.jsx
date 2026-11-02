@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export const Hero = () => {
   const [bgImage, setBgImage] = useState('');
@@ -50,9 +51,11 @@ export const Hero = () => {
             <span className="text-amber-400">Correct Islamic</span> Education
           </p>
 
-          <button className="bg-amber-600 text-white h-12 mt-6 px-8 rounded-sm cursor-pointer hover:bg-[#153a4d] transition-colors">
-            Apply Now
-          </button>
+          <Link to="/Application">
+            <button className="bg-amber-600 text-white h-12 mt-6 px-8 rounded-sm cursor-pointer hover:bg-[#153a4d] transition-colors">
+              Apply Now
+            </button>
+          </Link>
         </div>
       </div>
     </section>
